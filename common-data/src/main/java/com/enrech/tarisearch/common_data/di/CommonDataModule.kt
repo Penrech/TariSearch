@@ -3,12 +3,17 @@ package com.enrech.tarisearch.common_data.di
 import android.content.Context
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
+import androidx.room.Room
 import com.enrech.tarisearch.common_data.ApplicationLifeCycle
 import com.enrech.tarisearch.common_data.provider.DispatcherProviderImpl
 import com.enrech.tarisearch.common_data.provider.HttpClientProvider
 import com.enrech.tarisearch.common_data.provider.UrlProviderImpl
+import com.enrech.tarisearch.common_data.repository.MarkersRepositoryImpl
+import com.enrech.tarisearch.common_data.room.Constant
+import com.enrech.tarisearch.common_data.room.MarkersDatabase
 import com.enrech.tarisearch.common_domain.provider.DispatcherProvider
 import com.enrech.tarisearch.common_domain.provider.UrlProvider
+import com.enrech.tarisearch.common_domain.repository.MarkersRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -29,6 +34,10 @@ abstract class CommonDataModule {
     @Singleton
     abstract fun bindUrlProvider(impl: UrlProviderImpl): UrlProvider
 
+    @Binds
+    @Singleton
+    abstract fun bindMarkersRepository(impl: MarkersRepositoryImpl): MarkersRepository
+
     companion object {
         @Provides
         @ApplicationLifeCycle
@@ -37,5 +46,12 @@ abstract class CommonDataModule {
         @Provides
         @Singleton
         fun provideHttpClient(): HttpClient = HttpClientProvider.getClient()
+
+        @Singleton
+        @Provides
+        fun provideMarkerDatabase(@ApplicationContext context: Context): MarkersDatabase =
+            Room
+                .databaseBuilder(context, MarkersDatabase::class.java, Constant.dbName)
+                .build()
     }
 }
