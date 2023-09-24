@@ -16,4 +16,7 @@ dependencies {
     implementation(project(":common"))
     implementation(project((":marker-domain")))
     implementation(project((":api-data")))
+
+    implementation(libs.google.maps.compose)
+    implementation(libs.google.maps.services)
 }
