@@ -41,7 +41,7 @@ androidx_viewmodel_compose = "2.6.2"
 androidx_splash = "1.0.1"
 androidx_work = "2.8.1"
 
-material_design = "1.6.1"
+material_design = "1.5.1"
 material_design3 = "1.1.1"
 
 coroutines = "1.7.3"
@@ -114,6 +114,7 @@ androidx_compose_live_data = { module = "androidx.compose.runtime:runtime-liveda
 androidx_compose_ui_tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "androidx_compose" }
 androidx_compose_ui_tooling_preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "androidx_compose" }
 androidx_compose_ui_foundation = { module = "androidx.compose.foundation:foundation", version.ref = "androidx_compose" }
+androidx_compose_ui_material = { module = "androidx.compose.material:material", version.ref = "material_design" }
 androidx_compose_ui_material3 = { module = "androidx.compose.material3:material3", version.ref = "material_design3" }
 androidx_compose_ui_material3_window_size = { module = "androidx.compose.material3:material3-window-size-class", version.ref = "material_design3" }
 androidx_compose_theme_adapter = { module = "com.google.android.material:compose-theme-adapter", version.ref = "androidx_compose_theme_adapter" }
