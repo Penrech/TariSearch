@@ -15,11 +15,11 @@ android.namespace = "com.enrech.ulessontest.common_data"
 
 dependencies {
     api(project(":common-domain"))
-    implementation(libs.ktor.client.android)
-    implementation(libs.ktor.content.negotiation)
-    implementation(libs.ktor.client.logging)
-    implementation(libs.ktor.client.serialization.json)
-    implementation(libs.kotlin.serialization.json)
+    api(libs.ktor.client.android)
+    api(libs.ktor.content.negotiation)
+    api(libs.ktor.client.logging)
+    api(libs.ktor.client.serialization.json)
+    api(libs.kotlin.serialization.json)
 
     api(libs.androidx.room.runtime)
     api(libs.androidx.room.ktx)
