@@ -1,0 +1,67 @@
+dependencies {
+    implementation libs.kotlin
+    implementation libs.kotlin.date.time
+
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.core
+    implementation libs.androidx.activity
+    implementation libs.androidx.fragment
+    implementation libs.androidx.card.view
+    implementation libs.androidx.constraint.layout
+    implementation libs.androidx.flexbox
+    implementation libs.androidx.browser
+    implementation libs.androidx.swipe.refresh.layout
+    implementation libs.androidx.work
+
+    //Android architecture components
+    implementation libs.androidx.lifecycle
+    implementation libs.androidx.process.lifecycle
+    implementation libs.androidx.liveData
+    implementation libs.androidx.viewModel
+    implementation libs.androidx.java8
+    implementation libs.androidx.nav.runtime
+    implementation libs.androidx.nav.fragment
+    implementation libs.androidx.nav.ui
+    implementation libs.androidx.nav.compose
+
+    //Compose
+    implementation libs.androidx.compose.runtime
+    implementation libs.androidx.compose.ui
+    implementation libs.androidx.animation
+    implementation libs.androidx.animation.graphics
+    implementation libs.androidx.compose.live.data
+    debugImplementation libs.androidx.compose.ui.tooling
+    implementation libs.androidx.compose.ui.tooling.preview
+    implementation libs.androidx.compose.ui.foundation
+    implementation libs.androidx.compose.ui.material3
+    implementation libs.androidx.compose.ui.material3.window.size
+    implementation libs.androidx.compose.theme.adapter
+    implementation libs.androidx.compose.activity
+    implementation libs.androidx.compose.lifecycle
+    implementation libs.androidx.compose.ui.accompanist.navigation.animation
+    implementation libs.androidx.compose.ui.accompanist.navigation.material
+    implementation libs.androidx.compose.ui.accompanist.system.ui.controller
+    implementation libs.androidx.compose.ui.accompanist.placeholder.material
+    implementation libs.androidx.compose.ui.accompanist.web.view
+    implementation libs.androidx.compose.ui.accompanist.flow.layout
+    implementation libs.androidx.compose.constraint.layout
+
+    //Coroutines
+    implementation libs.coroutines.core
+    implementation libs.coroutines.android
+    implementation libs.kotlin.flow.extensions
+
+    //Dagger
+    implementation libs.dagger
+    implementation libs.dagger.navigation
+    implementation libs.dagger.navigation.compose
+    ksp libs.dagger.compiler
+
+    //Coil
+    implementation libs.coil
+    implementation libs.coil.svg
+    implementation libs.coil.compose
+
+    //Debug tools
+    implementation libs.timber
+}
