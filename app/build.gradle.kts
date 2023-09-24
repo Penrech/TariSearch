@@ -69,4 +69,6 @@ android {
 }
 
 dependencies {
+    api(project(":common"))
+    implementation(project(":main"))
 }
