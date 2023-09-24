@@ -5,6 +5,9 @@ import kotlinx.coroutines.flow.Flow
 
 interface MarkersRepository {
     suspend fun upsertMarker(vararg marker: Marker)
+    suspend fun deleteMarker(vararg marker: Marker)
     suspend fun getAllMarkers(): List<Marker>
     fun observeAllMarkers(): Flow<List<Marker>>
+
+    suspend fun checkExpirationAndReturn(elapsedTime: Long): List<Marker>
 }

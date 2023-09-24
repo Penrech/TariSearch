@@ -7,6 +7,7 @@ import com.enrech.tarisearch.common_domain.entity.MarkerCoordinates
 import com.enrech.tarisearch.common_domain.entity.MarkerType
 import com.enrech.tarisearch.common_domain.extension.ifLet
 import javax.inject.Inject
+import kotlin.math.abs
 
 class MarkerEntityMapper @Inject constructor(
     private val dateMapper: DateMapper
@@ -18,14 +19,20 @@ class MarkerEntityMapper @Inject constructor(
         }
 
         return ifLet(from?.id, coordinate) { id, coordinates ->
+            val startDate = dateMapper.mapFrom(from?.lifeSpan?.begin)
             Marker(
                 id = id,
                 name = from?.name.orEmpty(),
                 type = from?.type?.let { MarkerType.getByName(it) } ?: MarkerType.Other,
                 address = from?.address,
                 coordinates = coordinates,
-                startDate = dateMapper.mapFrom(from?.lifeSpan?.begin)
+                startDate = startDate,
+                lifeSpan = abs(startDate.year.minus(CONTROL_YEAR)).toLong()
             )
         }
+    }
+
+    private companion object {
+        const val CONTROL_YEAR = 1990
     }
 }

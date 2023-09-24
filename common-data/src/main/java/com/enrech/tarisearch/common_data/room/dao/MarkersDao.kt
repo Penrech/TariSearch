@@ -1,6 +1,7 @@
 package com.enrech.tarisearch.common_data.room.dao
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Upsert
 import com.enrech.tarisearch.common_data.room.Constant
@@ -18,4 +19,6 @@ interface MarkersDao {
     @Query("SELECT * FROM ${Constant.markersTable}")
     fun observeAllMarkers(): Flow<List<MarkerRoomEntity>>
 
+    @Delete
+    fun deleteMarker(vararg marker: MarkerRoomEntity)
 }
