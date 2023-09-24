@@ -3,4 +3,5 @@
     <string name="empty" translatable="false" />
     <string name="secondary_error">Ops something went wrong</string>
     <string name="secondary_network_error">There\'s no internet connection</string>
+    <string name="search_box_placeholder">Search for amazing places here!</string>
 </resources>

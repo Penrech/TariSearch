@@ -10,6 +10,7 @@ fun TariSearchTheme(
     content: @Composable () -> Unit
 ) {
     MaterialTheme(
+        colorScheme = lightColorScheme(primaryContainer = accentRed),
         content = content
     )
 }
