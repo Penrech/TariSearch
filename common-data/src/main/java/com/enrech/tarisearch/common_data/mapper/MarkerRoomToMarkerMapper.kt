@@ -15,7 +15,8 @@ class MarkerRoomToMarkerMapper @Inject constructor(): BaseReversibleMapper<Marke
             address = from.address,
             coordinates = MarkerCoordinates(from.lat, from.lon),
             startDate = from.beginDate,
-            lifeSpan = from.lifeSpan
+            lifeSpan = from.lifeSpan,
+            initialLifeSpan = from.initialLifeSpan
         )
 
     override fun mapTo(to: Marker): MarkerRoomEntity =
@@ -27,6 +28,7 @@ class MarkerRoomToMarkerMapper @Inject constructor(): BaseReversibleMapper<Marke
             lat = to.coordinates.lat,
             lon = to.coordinates.lon,
             beginDate = to.startDate,
-            lifeSpan = to.lifeSpan
+            lifeSpan = to.lifeSpan,
+            initialLifeSpan = to.initialLifeSpan
         )
 }

@@ -19,7 +19,10 @@ class MarkerEntityMapper @Inject constructor(
         }
 
         return ifLet(from?.id, coordinate) { id, coordinates ->
+
             val startDate = dateMapper.mapFrom(from?.lifeSpan?.begin)
+            val lifeSpan = abs(startDate.year.minus(CONTROL_YEAR)).toLong()
+
             Marker(
                 id = id,
                 name = from?.name.orEmpty(),
@@ -27,7 +30,8 @@ class MarkerEntityMapper @Inject constructor(
                 address = from?.address,
                 coordinates = coordinates,
                 startDate = startDate,
-                lifeSpan = abs(startDate.year.minus(CONTROL_YEAR)).toLong()
+                lifeSpan = lifeSpan,
+                initialLifeSpan = lifeSpan
             )
         }
     }

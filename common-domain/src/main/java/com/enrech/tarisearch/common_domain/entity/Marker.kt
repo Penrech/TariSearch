@@ -9,5 +9,6 @@ data class Marker(
     val address: String?,
     val coordinates: MarkerCoordinates,
     val startDate: LocalDateTime,
-    val lifeSpan: Long
+    val lifeSpan: Long,
+    val initialLifeSpan: Long
 )

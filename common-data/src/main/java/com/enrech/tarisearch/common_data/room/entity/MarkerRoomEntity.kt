@@ -21,5 +21,6 @@ data class MarkerRoomEntity(
     val lat: Float,
     val lon: Float,
     val beginDate: LocalDateTime,
-    val lifeSpan: Long
+    val lifeSpan: Long,
+    val initialLifeSpan: Long
 ): Parcelable
