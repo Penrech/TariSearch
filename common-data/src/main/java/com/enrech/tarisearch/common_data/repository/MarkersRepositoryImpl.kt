@@ -17,9 +17,12 @@ class MarkersRepositoryImpl @Inject constructor(
     private val dispatcherProvider: DispatcherProvider,
     private val mapper: MarkerRoomToMarkerMapper
 ) : MarkersRepository {
-    override suspend fun upsertMarker(vararg marker: Marker) =
+    override suspend fun upsertMarker(vararg marker: Marker): List<Marker> =
         withContext(dispatcherProvider.io()) {
-            db.markerDao().addUpdateMarker(*mapper.mapToList(marker.toList()).toTypedArray())
+            db.withTransaction {
+                db.markerDao().addUpdateMarker(*mapper.mapToList(marker.toList()).toTypedArray())
+                getAllMarkers()
+            }
         }
 
     override suspend fun deleteMarker(vararg marker: Marker) = withContext(dispatcherProvider.io()) {

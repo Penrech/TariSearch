@@ -16,8 +16,12 @@ class ObserveMarkersWithExpirationUseCase @Inject constructor(
         combine(
             markersRepository.observeAllMarkers(),
             countUp.count(REPEAT_INTERVAL)
-        ) { _, elapsed ->
-            markersRepository.checkExpirationAndReturn(elapsed)
+        ) { data, elapsed ->
+            if (data.isNotEmpty()) {
+                markersRepository.checkExpirationAndReturn(elapsed)
+            } else {
+                data
+            }
         }
 
     companion object {

@@ -14,4 +14,6 @@ android.namespace = "com.enrech.tarisearch.main"
 
 dependencies {
     implementation(project(":common"))
+    implementation(project((":marker-domain")))
+    implementation(project((":api-data")))
 }
