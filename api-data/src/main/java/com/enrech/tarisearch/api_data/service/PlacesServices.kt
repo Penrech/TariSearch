@@ -23,7 +23,7 @@ class PlacesServices @Inject constructor(
         }.body()
 
     private companion object {
-        const val PLACES = "places"
+        const val PLACES = "place"
 
         const val PARAM_FMT = "fmt"
         const val PARAM_LIMIT = "limit"

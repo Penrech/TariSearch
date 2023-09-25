@@ -8,5 +8,5 @@ interface MarkersRepository {
     suspend fun deleteMarker(vararg marker: Marker)
     suspend fun getAllMarkers(): List<Marker>
     fun observeAllMarkers(): Flow<List<Marker>>
-    suspend fun checkExpirationAndReturn(elapsedTime: Long): List<Marker>
+    suspend fun checkExpiration(timeToDiscount: Int)
 }

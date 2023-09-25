@@ -10,13 +10,10 @@ apply(from = "$rootDir/android-config.gradle")
 apply(from = "$rootDir/feature-dependencies.gradle")
 apply(from = "$rootDir/test-dependencies.gradle")
 
-android.namespace = "com.enrech.tarisearch.main"
+android.namespace = "com.enrech.tarisearch.marker"
 
 dependencies {
     implementation(project(":common"))
-    implementation(project((":marker")))
-    implementation(project((":api-data")))
-
-    implementation(libs.google.maps.compose)
+    api(project(":marker-domain"))
     implementation(libs.google.maps.services)
 }
