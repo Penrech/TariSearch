@@ -29,6 +29,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
@@ -46,6 +47,7 @@ fun SearchBox(
 ) {
     var query by remember { mutableStateOf("") }
     val keyboardController = LocalSoftwareKeyboardController.current
+    val focus = LocalFocusManager.current
     val clearVisible by remember {
         derivedStateOf {
             query.isNotBlank()
@@ -94,6 +96,7 @@ fun SearchBox(
                     if (query.isNotBlank()) { onSearch(query) }
                     else {
                         keyboardController?.hide()
+                        focus.clearFocus(true)
                     }
                 }
             )

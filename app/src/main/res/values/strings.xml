@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">TariSearch</string>
-    <string name="splash_title">Find\nPlaces</string>
-    <string name="splash_subtitle">By Query</string>
+    <string name="splash_title">Tari</string>
+    <string name="splash_subtitle">search</string>
 </resources>

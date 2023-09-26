@@ -19,3 +19,29 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+-keepattributes *Annotation*, InnerClasses
+-dontnote kotlinx.serialization.SerializationKt
+-keep,includedescriptorclasses class com.enrech.**$$serializer { *; }
+-keepclassmembers,allowoptimization class com.enrech.** { *** Companion; }
+-keepclassmembers,allowoptimization class com.enrech.** { kotlinx.serialization.KSerializer serializer(...); }
+
+-keep class kotlin.reflect.** { *; }
+-dontwarn kotlin.reflect.**
+-keep class org.jetbrains.** { *; }
+
+#OkHttp
+-dontwarn okio.**
+-dontwarn com.squareup.okhttp.**
+-keep class com.squareup.okhttp.** { *; }
+-keep interface com.squareup.okhttp.** { *; }
+
+# OkHttp 3
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class okhttp3.** { *; }
+-keep interface okhttp3.** { *; }
+-keep,includedescriptorclasses class okhttp3.internal.** { *; }
+-dontwarn okhttp3.**
+-dontnote okhttp3.internal.platform.**
+
+-keep,allowobfuscation,allowshrinking class kotlin.coroutines.Continuation

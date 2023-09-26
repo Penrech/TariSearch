@@ -11,6 +11,7 @@ fun TariSearchTheme(
 ) {
     MaterialTheme(
         colorScheme = lightColorScheme(primaryContainer = accentRed),
+        typography = TariType,
         content = content
     )
 }

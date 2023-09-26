@@ -22,7 +22,7 @@ data class MarkerUI(
         MarkerType.ReligiousBuilding -> R.drawable.ic_church
         MarkerType.EducationalInstitution -> R.drawable.ic_educational
         MarkerType.PressingPlant -> R.drawable.ic_press
-        MarkerType.Other -> R.drawable.ic_location
+        MarkerType.Other -> R.drawable.ic_other
     }
 
     companion object {

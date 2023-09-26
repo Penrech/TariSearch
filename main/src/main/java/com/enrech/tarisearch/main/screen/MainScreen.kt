@@ -28,6 +28,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
@@ -55,6 +56,11 @@ fun MainScreen(viewModel: MainViewModel = hiltViewModel()) {
     val state by viewModel.screenState.collectAsState()
     val cameraPositionState = rememberCameraPositionState()
 
+    val context = LocalContext.current
+    val snackbarHostState = remember { SnackbarHostState() }
+    val keyboardController = LocalSoftwareKeyboardController.current
+    val focus = LocalFocusManager.current
+
     LaunchedEffect(state.timestamp) {
         if (state.markers.isNotEmpty()) {
             val bounds = state.markers.fold(LatLngBounds.builder()) { builder, item ->
@@ -66,17 +72,16 @@ fun MainScreen(viewModel: MainViewModel = hiltViewModel()) {
         }
     }
 
-    val context = LocalContext.current
-    val snackbarHostState = remember { SnackbarHostState() }
-    val keyboardController = LocalSoftwareKeyboardController.current
-
     HandleEffects(viewModel.effect) {
         when (it) {
             is MainEffect.DisplaySecondaryError -> launch {
                 snackbarHostState.showSnackbar(it.error)
             }
 
-            MainEffect.CloseKeyBoard -> keyboardController?.hide()
+            MainEffect.CloseKeyBoard -> {
+                keyboardController?.hide()
+                focus.clearFocus(true)
+            }
         }
     }
 
@@ -118,7 +123,7 @@ private fun UIContent(
                     icon = bitmapDescriptorFromVector(
                         context,
                         density = density,
-                        size = DpSize(24.dp, 24.dp),
+                        size = DpSize(32.dp, 32.dp),
                         com.enrech.tarisearch.marker.R.drawable.ic_location
                     ),
                     title = markerUI.name
