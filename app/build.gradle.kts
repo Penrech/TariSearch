@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -6,6 +8,15 @@ plugins {
     id("dagger.hilt.android.plugin")
 }
 apply(from = "$rootDir/feature-dependencies.gradle")
+
+val properties = Properties()
+
+val credentialsFile = project.file("../credentials.properties")
+if (credentialsFile.isFile) {
+    properties.load(credentialsFile.inputStream())
+} else {
+    logger.error("Missing credentials file!")
+}
 
 android {
     namespace = "com.enrech.tarisearch"
@@ -28,6 +39,15 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("release") {
+            storeFile = file("../release_key.jks")
+            storePassword = properties.getProperty("key_store.password")
+            keyAlias = properties.getProperty("key.alias")
+            keyPassword = properties.getProperty("key.password")
+        }
+    }
+
     buildTypes {
         getByName("debug") {
             isDebuggable = true
@@ -38,6 +58,7 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 

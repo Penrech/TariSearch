@@ -45,3 +45,12 @@
 -dontnote okhttp3.internal.platform.**
 
 -keep,allowobfuscation,allowshrinking class kotlin.coroutines.Continuation
+
+#Mapping.txt for play console
+-keepattributes LineNumberTable,SourceFile
+-renamesourcefileattribute SourceFile
+
+##---------------Begin: proguard configuration for Pusher Java Client  ----------
+-dontwarn org.slf4j.impl.StaticLoggerBinder
+##---------------End: proguard configuration for Pusher Java Client  ----------
+
